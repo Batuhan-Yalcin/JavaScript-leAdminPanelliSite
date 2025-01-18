@@ -1,0 +1,217 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+.courses {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.course {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 15px;
+}
+
+.course-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.course-title {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.course-description {
+    font-size: 1rem;
+    color: #555;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    margin-top: 30px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+}
+
+.navbar ul {
+    list-style-type: none;
+}
+
+.navbar ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: rgb(240, 2, 2);
+    font-size: 1.2rem;
+}
+
+.navbar ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Diğer stil kuralları aynı kalacak */
+
+#admin-panel {
+    padding: 20px;
+    margin: 20px;
+}
+
+.add-course,
+.course-list {
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin: 5px 0;
+}
+
+/* Form Elemanlarının Arka Plan ve Yazı Renkleri */
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ffffff; /* Beyaz arka plan */
+    color: #333333; /* Siyah yazı rengi */
+}
+
+/* Butonlar */
+button {
+    background-color: #007BFF; /* Mavi arka plan */
+    color: #FFFFFF; /* Beyaz yazı rengi */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Buton Hover Efekti */
+button:hover {
+    background-color: #0056b3; /* Daha koyu mavi hover efekti */
+}
+
+button {
+    background-color: #007BFF; /* Mavi arka plan */
+    color: #FFFFFF; /* Beyaz yazı rengi */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3; /* Daha koyu mavi hover efekti */
+}
+
+ul li button {
+    background-color: #f44336; /* Kırmızı arka plan */
+    color: white; /* Beyaz yazı rengi */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+ul li button:hover {
+    background-color: #e53935; /* Daha koyu kırmızı hover efekti */
+}
+button {
+    background-color: #007BFF; /* Mavi arka plan */
+    color: #FFFFFF; /* Beyaz yazı rengi */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3; /* Daha koyu mavi hover efekti */
+}
+
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+}
+
+ul li button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+ul li button:hover {
+    background-color: #e53935;
+}
+
+@media (max-width: 600px) {
+    .courses {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .course img {
+        height: 150px;
+    }
+
+    .navbar ul li {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+
