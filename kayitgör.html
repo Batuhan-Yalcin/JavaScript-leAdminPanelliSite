@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıtlı Kullanıcılar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .user-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .user-list li {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .empty-message {
+            text-align: center;
+            font-size: 16px;
+            color: #777;
+        }
+
+        .back-button {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .back-button:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Kayıtlı Kullanıcılar</h2>
+
+        <ul class="user-list" id="user-list"></ul>
+
+        <a href="login.html" class="back-button">Giriş Sayfasına Dön</a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const userList = document.getElementById("user-list");
+
+            // localStorage'dan kullanıcıları al
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+
+            if (users.length === 0) {
+                userList.innerHTML = "<li class='empty-message'>Henüz kayıtlı kullanıcı bulunmamaktadır.</li>";
+                return;
+            }
+
+            // Kullanıcıları listele
+            users.forEach(user => {
+                const li = document.createElement("li");
+                li.innerHTML = `
+                    <p><strong>Ad Soyad:</strong> ${user.name}</p>
+                    <p><strong>E-posta:</strong> ${user.email}</p>
+                    <p><strong>Şifre:</strong> ${user.password}</p>
+                    <p><strong>Telefon Numarası:</strong> ${user.phone}</p>
+                `;
+                userList.appendChild(li);
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eğitimler</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="#courses">Eğitimler</a></li>
+                <li><a href="#about">Hakkında</a></li>
+            </ul>
+        </nav>
+        <h1>Eğitim Platformu</h1>
+    </header>
+
+    <section id="courses" class="courses">
+        <div class="course">
+            <img src="images/course1.jpg" alt="Eğitim 1" class="course-img">
+            <h2 class="course-title">SIFIRDAN İLERİ DÜZEY JAVA EĞİTİMİ</h2>
+            <p class="course-description">Bu eğitimi aldıktan sonra Javada nesne yönelimli programlama bilgisi ile sektöre adım atabileceksiniz.</p>
+            <button class="add-to-cart" data-course-title="SIFIRDAN İLERİ DÜZEY JAVA EĞİTİMİ" data-course-description="Bu eğitimi aldıktan sonra Javada nesne yönelimli programlama bilgisi ile sektöre adım atabileceksiniz." data-course-image="images/course1.jpg">Sepete Ekle</button>
+        </div>
+
+        <div class="course">
+            <img src="images/course2.png" alt="Eğitim 2" class="course-img">
+            <h2 class="course-title">SIFIRDAN İLERİ DÜZEY C# EĞİTİMİ</h2>
+            <p class="course-description">Bu eğitimi aldıktan sonra C#'da nesne yönelimli programlama bilgisi ile sektöre adım atabileceksiniz.</p>
+            <button class="add-to-cart" data-course-title="SIFIRDAN İLERİ DÜZEY C# EĞİTİMİ" data-course-description="Bu eğitimi aldıktan sonra C#'da nesne yönelimli programlama bilgisi ile sektöre adım atabileceksiniz." data-course-image="images/course2.png">Sepete Ekle</button>
+        </div>
+
+        <div class="course">
+            <img src="images/course3.jpeg" alt="Eğitim 3" class="course-img">
+            <h2 class="course-title">C# WINDOWS FORM EĞİTİMİ</h2>
+            <p class="course-description">Bu eğitimi aldıktan sonra C#'da Windows Formlar ile gerçek zamanlı projeler yapabileceksiniz.</p>
+            <button class="add-to-cart" data-course-title="C# WINDOWS FORM EĞİTİMİ" data-course-description="Bu eğitimi aldıktan sonra C#'da Windows Formlar ile gerçek zamanlı projeler yapabileceksiniz." data-course-image="images/course3.jpeg">Sepete Ekle</button>
+        </div>
+
+        <div class="course">
+            <img src="images/course4.jpg" alt="Eğitim 4" class="course-img">
+            <h2 class="course-title">C# ADO.NET EĞİTİMİ</h2>
+            <p class="course-description">Bu eğitimi aldıktan sonra Windows Form projelerinizi SQL veri tabanı ile bağlayıp veri ekleyip veri çekebilirsiniz.</p>
+            <button class="add-to-cart" data-course-title="C# ADO.NET EĞİTİMİ" data-course-description="Bu eğitimi aldıktan sonra Windows Form projelerinizi SQL veri tabanı ile bağlayıp veri ekleyip veri çekebilirsiniz." data-course-image="images/course4.jpg">Sepete Ekle</button>
+        </div>
+
+        <div class="course">
+            <img src="images/course5.jpeg" alt="Eğitim 5" class="course-img">
+            <h2 class="course-title">MSSQL VERİ TABANI EĞİTİMİ</h2>
+            <p class="course-description">Bu eğitimi aldıktan sonra MSSQL veri tabanında yeterli bilgiye sahip olacaksınız.</p>
+            <button class="add-to-cart" data-course-title="MSSQL VERİ TABANI EĞİTİMİ" data-course-description="Bu eğitimi aldıktan sonra MSSQL veri tabanında yeterli bilgiye sahip olacaksınız." data-course-image="images/course5.jpeg">Sepete Ekle</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Tüm Hakları Batuhan Yalçın'da Saklıdır.</p>
+    </footer>
+
+    <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const courseTitle = button.getAttribute('data-course-title');
+            const courseDescription = button.getAttribute('data-course-description');
+            const courseImage = button.getAttribute('data-course-image');
+            const course = { title: courseTitle, description: courseDescription, image: courseImage };
+
+            // Kullanıcı bilgisini al
+            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+            // Eğer kullanıcı giriş yapmışsa, sepete eklerken kullanıcı bilgisini de ekleyelim
+            if (currentUser) {
+                course.user = currentUser.email;
+            } else {
+                course.user = "Anonim";  // Giriş yapmamış kullanıcı
+            }
+
+            let courses = JSON.parse(localStorage.getItem('cart')) || [];
+            courses.push(course);
+            localStorage.setItem('cart', JSON.stringify(courses));
+
+            alert(courseTitle + " sepete eklendi.");
+        });
+    });
+});
+
+    </script>
+</body>
+</html>

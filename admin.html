@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneli</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="admin.html">Admin Paneli</a></li>
+            </ul>
+        </nav>
+        <h1>Admin Paneli</h1>
+    </header>
+
+    <section id="admin-panel">
+        <h2>Yönetim İşlemleri</h2>
+
+        <!-- Sepet içeriği -->
+        <div class="cart-list">
+            <h3>Sepetteki Eğitimler</h3>
+            <ul id="cart-list">
+                <!-- Sepet içeriği buraya eklenecek -->
+            </ul>
+        </div>
+
+        <div class="add-course">
+            <h3>Yeni Eğitim Ekle</h3>
+            <form id="add-course-form">
+                <label for="course-title">Eğitim Başlığı:</label>
+                <input type="text" id="course-title" required>
+
+                <label for="course-description">Eğitim Açıklaması:</label>
+                <textarea id="course-description" required></textarea>
+
+                <label for="course-image">Eğitim Resmi URL:</label>
+                <input type="text" id="course-image" required>
+
+                <button type="submit">Eğitim Ekle</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Eğitim Platformu</p>
+    </footer>
+
+    <script>
+        // Admin oturumu kontrolü
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            if (!currentUser || currentUser.email !== "admin@gmail.com" || currentUser.password !== "1907") {
+                alert("Görüntüleme yetkiniz yok.");
+                window.location.href = "login.html";
+            } else {
+                // Sepet içeriğini admin panelinde göster
+                updateCart();
+            }
+        });
+
+        // Sepeti güncelleme
+       // Sepeti güncelleme
+const updateCart = () => {
+    const cartList = document.getElementById('cart-list');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cartList.innerHTML = '';
+
+    cart.forEach(course => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <strong>${course.title}</strong><br>
+            ${course.description}<br>
+            Kullanıcı: ${course.user}<br>
+            <img src="${course.image}" alt="${course.title}" style="width: 100px; height: auto;">
+        `;
+        cartList.appendChild(li);
+    });
+};
+
+    </script>
+</body>
+</html>
